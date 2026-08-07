@@ -29,3 +29,10 @@ This workspace is designed to help the user generate and tailor resumes using La
   1. A clickable link to the generated `resume.tex` file.
   2. The job match rate (%) compared to your profile (both before and after tailoring).
   3. A structured table displaying key keywords used/implemented for this JD.
+
+## 5. Token Efficiency & Cost Optimization (Reduced Token Usage)
+- **Use Chunk Edits**: Avoid replacing or rewriting entire files when making changes. Instead, make precise edits to targeted lines using `replace_file_content` or `multi_replace_file_content`.
+- **Targeted Reading**: When viewing files, do not read the entire file if you only need a specific portion. Specify precise line ranges in `view_file` to conserve input tokens.
+- **Scrape Filtering**: When fetching job descriptions from URLs, extract only the text relevant to the job requirements (title, company, skills, responsibilities). Filter out headers, footers, HTML scripts, and navigation links.
+- **Concise Reasoning & Chat Output**: Eliminate conversational filler, pleasantries, and redundancy in your thoughts and responses. Provide the requested information directly.
+- **Prevent Execution Loops**: Set a hard limit on steps and verify progress at each step to prevent infinite thinking loops or redundant tool calls. Stop and ask for clarification if stuck.

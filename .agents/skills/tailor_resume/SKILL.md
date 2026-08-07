@@ -65,3 +65,10 @@ Deliver the output in a clear, formatted presentation:
      - **Implementation Detail** (where it was integrated in the resume)
 3. **Resume Location**: Show a clickable file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`).
 4. **DO NOT output the full LaTeX code block in the terminal.** It is already saved to the path above.
+
+---
+
+## Token Efficiency Guidelines (Reduced Token Usage)
+- **JD Scrape Optimizations**: When reading job description URLs, filter out and extract only the relevant job title, company name, required skills, and core responsibilities. Discard HTML tags, header navigation, scripts, and footer content before processing.
+- **One-Time Context Load**: Load the master profile `profile.md` and template code once. Reuse these details from your active context instead of repeatedly reading the files.
+- **Single-Pass File Writing**: Finalize the resume details entirely in memory first, then write the finished LaTeX code to `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex` in a single write operation rather than multiple incremental edits.
