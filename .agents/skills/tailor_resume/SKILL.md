@@ -57,10 +57,11 @@ Before starting, ensure you have:
 
 ### Step 7: Present Results to User
 Deliver the output in a clear, formatted presentation:
-1. **ATS Analysis Report**:
+1. **Job Match Rate**: Show the calculated match rate percentage of the JD to the profile before tailoring vs. after tailoring (e.g. "Initial Match Rate: 65% | Tailored Match Rate: 98%").
+2. **ATS Keywords Table**:
    - Provide a table detailing:
      - **Required Keyword / Skill** (from JD)
      - **Status** (Already Present / Added during tailoring)
      - **Implementation Detail** (where it was integrated in the resume)
-2. **Resume Location**: Show the file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`).
-3. **Code block**: Show the complete LaTeX code in a copyable Markdown code block so the user can easily paste it directly into Overleaf.
+3. **Resume Location**: Show a clickable file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`).
+4. **DO NOT output the full LaTeX code block in the terminal.** It is already saved to the path above.

@@ -24,4 +24,8 @@ This workspace is designed to help the user generate and tailor resumes using La
 
 ## 4. UI/UX and Delivery
 - Always write/save the generated code to a separate directory inside the outputs folder: `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex` (e.g., `outputs/Sameer-Google-AI_Engineer/resume.tex`). Do not write it to a generic `tailored_resume.tex` file in the root.
-- Present the final LaTeX code in a clean, copyable Markdown code block.
+- **Do not print the complete LaTeX code block in the terminal response**.
+- In the final response, only present:
+  1. A clickable link to the generated `resume.tex` file.
+  2. The job match rate (%) compared to your profile (both before and after tailoring).
+  3. A structured table displaying key keywords used/implemented for this JD.
