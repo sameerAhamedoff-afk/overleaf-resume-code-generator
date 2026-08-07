@@ -1,0 +1,104 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{parskip} 
+\usepackage{hologo}
+
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=0.3in, bottom=0.3in, left=0.3in, right=0.3in]{geometry}
+
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+\usepackage{supertabular}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.42\textwidth}
+
+\usepackage{titlesec}	
+\usepackage{multicol}
+\usepackage{multirow}
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{4pt}{3pt}
+
+\usepackage{fontawesome5}
+
+\usepackage[unicode, draft=false]{hyperref}
+
+\usepackage[normalem]{ulem}
+
+\usepackage{times}
+
+\begin{document}
+
+\pagestyle{empty} 
+
+\noindent
+\begin{minipage}[c]{0.22\textwidth}
+\raggedright
+\includegraphics[width=3.5cm]{Pic.png} 
+\end{minipage}%
+\begin{minipage}[c]{0.78\textwidth}
+\raggedright
+{\Huge Sameer Ahamed A} \\[6pt]
+Junior Software Engineer $|$ Full Stack \& AI $|$ Python \& Node.js \\[4pt]
+\href{mailto:sameerahamedoff3@gmail.com}{{\faEnvelope} sameerahamedoff3@gmail.com} $|$
+\href{tel:+919080861209}{{\faMobile} +91-9080861209} $|$
+\href{https://www.linkedin.com/in/sameer-ahamed-338558310/}{{{\raisebox{-0.05\height}{\faLinkedin} LinkedIn}}} $|$
+Chennai, Tamil Nadu
+\end{minipage}
+\vspace{10pt}
+
+\section{Profile}
+AI-forward Junior Software Engineer with a strong foundation in full-stack development (Python, Node.js, React) and a passion for building intelligent applications. Highly proficient in running a daily AI coding workflow (Cursor, Claude Code) to accelerate development and ship production-ready features rapidly. Proven experience owning smaller systems end-to-end, including implementing LLM-powered RAG pipelines, multi-agent frameworks, and automated evals. Eager to work directly with engineering leadership to build fast, scalable, and impactful software.
+
+\section{Skills}
+\noindent
+Programming \& Full Stack: Python (FastAPI), Node.js, TypeScript, React, REST APIs, System Design \\
+AI Engineering \& Agents: LLMs (OpenAI, Anthropic), RAG pipelines, LangGraph, LangChain, Evals (LangSmith, Ragas), MCP Servers, Prompt Engineering, Structured Output / Tool-use \\
+Databases \& Cloud: PostgreSQL, Vector Databases, MySQL, AWS (EC2, S3, SES), GCP, Docker \\
+Developer Tools \& Workflow: Cursor, Claude Code, Git, CI/CD pipelines, Regression Testing, Agile Iteration
+
+\section{Work Experience}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+Mirobs Innovations — India & & Nov 2024 -- Present \\
+AI and Fullstack Developer & & \\
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
+\item Built and shipped full-stack product features weekly, leveraging AI coding tools like Cursor to accelerate the development loop from ideation to production in a fast-paced environment.
+\item Owned the end-to-end development of a production-grade RAG backend microservice (Sighti), implementing robust vector search over complex data and writing regression tests and evals to ensure accurate LLM behavior.
+\item Developed autonomous AI agents using LangGraph and OpenAI, incorporating structured output and tool-use to reliably automate complex parsing tasks without breaking existing flows.
+\item Architected backend systems for a multi-tenant platform processing high-volume daily telemetry data into SQL databases, taking ownership of smaller systems and gradually scaling up.
+\item Maintained continuous background worker processes using node-cron and optimized operational overhead by securely configuring the AWS SES Shared IP Pool for automated communications to avoid the high costs of dedicated IPs.
+\item Worked closely with cross-functional teams to define scope and trade-offs, prioritizing fast iteration and reliable shipping over extended planning cycles.
+\end{itemize}
+
+\vspace{4pt}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+DLK Technologies & & Jan 2023 -- Mar 2023 \\
+Software Trainee & & \\
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
+\item Analyzed large datasets to refine logic models and algorithmic efficiency, reducing data processing errors by 30\%.
+\end{itemize}
+
+\section{Featured Projects}
+\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
+\item Stateful AI Agent Orchestration $|$ Python, LangGraph, LLMs, Tool-calling \\
+Developed a multi-agent framework to autonomously scan enterprise repositories and automate tasks. Implemented memory systems and complex tool-calling mechanisms, complete with an eval story to track multi-step reasoning reliability.
+\item Enterprise RAG Backend (Sighti) $|$ Python, FastAPI, Vector Search, Evals \\
+Architected a backend system that utilizes Retrieval-Augmented Generation to answer complex queries over unstructured data, employing AI evals to continuously track accuracy and mitigate hallucinations.
+\item Full-Stack Web Dashboards $|$ Node.js, React, PostgreSQL, Cloud \\
+Built scalable web applications to track and manage telemetry data, implementing modern frontend/backend patterns to deliver fast, responsive user interfaces similar to advanced administrative dashboards.
+\end{itemize}
+
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+R.M.D Engineering College, Chennai & & \\
+B.Tech — Computer Science and Business Systems & & \textit{CGPA: 8.44/10}
+\end{tabularx}
+
+\end{document}
