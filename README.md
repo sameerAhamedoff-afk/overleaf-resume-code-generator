@@ -37,11 +37,10 @@ These skills are automatically discovered by Antigravity in this workspace. You 
    - Load the user's master experience from `profile.md`.
    - Ingest and analyze the JD (fetching it online if a URL is provided).
    - Perform an **ATS Gap Analysis** comparing the JD to `profile.md` to identify missing keywords.
-   - Tailor the LaTeX code, incorporating missing keywords naturally into experience bullets and summaries.
-   - Escape LaTeX characters to guarantee zero Overleaf compile errors.
-   - Log the application details in `job_tracker.md`.
    - Save the tailored code to a separate directory inside the outputs folder: `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex` (e.g., `outputs/Sameer-Google-AI_Engineer/resume.tex`).
-   - Output the raw LaTeX code block and display an **ATS Key Keywords & Mapping Details** table showing what was added and where.
+   - Generate a professional cover letter as a Microsoft Word document (.docx) matching the tailored achievements, saving it to `outputs/<Username>-<Company_Name>-<Role_Name>/cover_letter.docx`.
+   - Log the application details in `job_tracker.md`.
+   - Output the calculated Job Match Rates, the ATS Keywords Table, and links to both files in the terminal response. Suppression of raw code and text output ensures clean CLI operation.
 
 ### 2. Manage Templates Skill
 **Triggers**: `list templates`, `view template <name>`, `add resume template`

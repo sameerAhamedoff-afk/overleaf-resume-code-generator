@@ -55,7 +55,14 @@ Before starting, ensure you have:
 ### Step 6: Save the File
 - Create the separate subfolder within `outputs/` (e.g., `outputs/Sameer-<Company_Name>-<Role_Name>/`) and save the final LaTeX code as `resume.tex` inside it.
 
-### Step 7: Present Results to User
+### Step 7: Generate Cover Letter (Word Format)
+- Based on the tailored resume and the target Job Description, write a compelling and professional 3-4 paragraph cover letter.
+- Save the paragraphs of the cover letter separated by double newlines into a temporary text file named `temp_cover_letter.txt` in the root workspace.
+- Run the python script to format and compile the cover letter into a Word document (.docx):
+  `python .agents/scripts/generate_docx.py --output "outputs/<Username>-<Company_Name>-<Role_Name>/cover_letter.docx" --name "Sameer Ahamed A" --email "sameerahamedoff3@gmail.com" --phone "+91-9080861209" --linkedin "https://www.linkedin.com/in/sameer-ahamed-338558310/" --company "<Company_Name>" --role "<Role_Name>" --content_file temp_cover_letter.txt`
+- Delete the temporary file `temp_cover_letter.txt` by running a powershell command: `Remove-Item -Force temp_cover_letter.txt`.
+
+### Step 8: Present Results to User
 Deliver the output in a clear, formatted presentation:
 1. **Job Match Rate**: Show the calculated match rate percentage of the JD to the profile before tailoring vs. after tailoring (e.g. "Initial Match Rate: 65% | Tailored Match Rate: 98%").
 2. **ATS Keywords Table**:
@@ -63,8 +70,11 @@ Deliver the output in a clear, formatted presentation:
      - **Required Keyword / Skill** (from JD)
      - **Status** (Already Present / Added during tailoring)
      - **Implementation Detail** (where it was integrated in the resume)
-3. **Resume Location**: Show a clickable file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`).
-4. **DO NOT output the full LaTeX code block in the terminal.** It is already saved to the path above.
+3. **Generated Files Locations**:
+   - Clickable link to the saved tailored LaTeX file: `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`
+   - Clickable link to the saved tailored Word cover letter file: `[cover_letter.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/cover_letter.docx)`
+4. **DO NOT output the full LaTeX code block or the cover letter text in the terminal.** They are already saved to the paths above.
+
 
 ---
 
