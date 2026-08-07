@@ -1,5 +1,6 @@
-# Tailored Resumes Output Folders (Sameer-<Company>-<Role>)
-Sameer-*/
+# Ignore all contents of outputs/ directory except .gitkeep
+outputs/*
+!outputs/.gitkeep
 tailored_resume.tex
 
 # LaTeX Temporary / Build Files

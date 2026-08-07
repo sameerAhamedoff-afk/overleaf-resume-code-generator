@@ -6,7 +6,7 @@
 \RequirePackage{color}
 \RequirePackage{graphicx}
 \usepackage[usenames,dvipsnames]{xcolor}
-\usepackage[scale=0.9, top=0.3in, bottom=0.3in, left=0.3in, right=0.3in]{geometry}
+\usepackage[scale=0.9, top=.4in, bottom=.4in]{geometry}
 
 \usepackage{tabularx}
 \usepackage{enumitem}
@@ -21,12 +21,13 @@
 \usepackage{multicol}
 \usepackage{multirow}
 
-\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
-\titlespacing{\section}{1pt}{4pt}{3pt}
+\titleformat{\section}{\Large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{2pt}{2pt}
 
 \usepackage{fontawesome5}
 
 \usepackage[unicode, draft=false]{hyperref}
+\color[HTML]{110223}
 
 \usepackage[normalem]{ulem}
 
@@ -36,65 +37,72 @@
 
 \pagestyle{empty} 
 
-\noindent
-\begin{minipage}[c]{0.22\textwidth}
-\raggedright
-\includegraphics[width=3.5cm]{Pic.png} 
-\end{minipage}%
-\begin{minipage}[c]{0.78\textwidth}
-\raggedright
-{\Huge Sameer Ahamed A} \\[6pt]
-AI and Fullstack Developer $|$ Node.js $\cdot$ React $\cdot$ Python $|$ Agentic AI Systems \\[4pt]
-\href{mailto:sameerahamedoff3@gmail.com}{{\faEnvelope} sameerahamedoff3@gmail.com} $|$
-\href{tel:+919080861209}{{\faMobile} +91-9080861209} $|$
-\href{https://www.linkedin.com/in/sameer-ahamed-338558310/}{{{\raisebox{-0.05\height}{\faLinkedin} LinkedIn}}} $|$
-Chennai, Tamil Nadu
-\end{minipage}
-\vspace{10pt}
+\begin{tabularx}{\linewidth}{@{} C @{}}
+\color[HTML]{1C033C} \Huge{Sameer Ahamed A} \\[6pt]
+AI Engineer ~|~ LLMs ~|~ Computer Vision ~|~ MLOps ~|~ AWS \\
+
+\href{mailto:sameerahamedoff3@gmail.com}{\textcolor[HTML]{371e77}{{\faEnvelope} sameerahamedoff3@gmail.com }} $|$
+\href{tel:+919080861209}{\textcolor[HTML]{371e77}{{\faMobile} +91-9080861209 }} $|$
+\href{https://www.linkedin.com/in/sameer-ahamed-338558310/}{\textcolor[HTML]{371e77}{{{\raisebox{-0.05\height}{\faLinkedin} LinkedIn }}}} $|$
+\textcolor[HTML]{371e77}{Chennai, Tamil Nadu}
+\end{tabularx}
 
 \section{Profile}
-Innovative AI and Fullstack Developer with practical experience designing, evaluating, and deploying production-quality agentic AI systems and cloud-native applications. Proficient in navigating code fluidly using GitHub Copilot to accelerate feature delivery while enforcing strict quality checks. Adept at building backend orchestration layers (Node.js, Python) and collaborating on React frontends to deliver end-to-end enterprise solutions. Proven track record of leveraging LLMs, retrieval systems (RAG), structured outputs, and major cloud platforms (AWS) to complete complex business tasks reliably.
+AI Engineer specializing in Large Language Models (LLMs), Computer Vision, and autonomous agent orchestration. Proven track record in designing scalable machine learning pipelines, deploying robust RAG architectures, and driving enterprise automation. Adept at managing the end-to-end ML lifecycle (MLOps), from data ingestion and model optimization to production deployment across high-availability AWS cloud environments.
 
 \section{Skills}
 \noindent
-Core Engineering: Node.js, Express.js, TypeScript, Python (FastAPI), React, Next.js, Data Structures and Algorithms, Object-Oriented Programming, RESTful and WebSocket APIs, System Design \\
-AI and Agentic Systems: GitHub Copilot, OpenAI API, LangChain, LangGraph, RAG architectures, LLMs, Tool Calling, Structured Outputs, Intelligent Automation \\
-Cloud and Infrastructure: AWS (EC2, S3, SES, Lambda), Docker Containerization, NGINX, MongoDB, PostgreSQL, CI/CD Pipelines \\
-Engineering Practices: Git/GitHub, Agile/Scrum Workflows, Jira, Code Reviews, System Observability (Prometheus, Grafana), Quality Evaluations
+\color[HTML]{1C033C}\textbf{AI \& Machine Learning:} Python, PyTorch, TensorFlow, Computer Vision (OpenCV, YOLO), NLP (spaCy, Hugging Face), FastAPI, LangChain, LangGraph, RAG (Pinecone, Hybrid Search), LLMs (OpenAI, Gemini, Groq, Llama 3), Sentence Transformers, Prompt Engineering \\
+\color[HTML]{1C033C}\textbf{Data \& Backend:} Vector Databases (Pinecone), MongoDB, PostgreSQL, Node.js, Express.js, RESTful APIs, WebSockets, Data Profiling, JWT Auth \\
+\color[HTML]{1C033C}\textbf{MLOps \& Cloud:} AWS (EC2, S3, SES, Lambda), Docker Containerization, NGINX, PM2, GitHub Actions (CI/CD for ML), Model Versioning, Linux/Unix \\
+\color[HTML]{1C033C}\textbf{Observability \& Tools:} Grafana, Prometheus, Git/GitHub, Postman, Figma, Jira, Agile/Scrum Workflows, Quality Evaluations
 
 \section{Work Experience}
 \begin{tabularx}{\linewidth}{ @{}l X r@{} }
-Mirobs Innovations — Remote / Chennai & & Nov 2024 -- Present \\
-AI and Fullstack Developer & & \\
+\textbf{Mirobs Innovations --- Remote / Chennai} & & \hfill \color[HTML]{371e77} Nov 2024 -- Present \\
+\color[HTML]{371e77}\textbf{AI Engineer} & & \\
 \end{tabularx}
-\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
-\item Designed, built, and evaluated AI-enabled agentic applications, utilizing GitHub Copilot to navigate generated code fluidly and accelerate production-grade feature delivery.
-\item Built a stateful GitHub AI agent using LangGraph and LangChain to autonomously scan enterprise repositories for vulnerabilities and automatically generate Jira tickets, streamlining Agile issue tracking workflows.
-\item Collaborated seamlessly across React frontends and Node.js backend orchestration layers to develop an AI-powered rewards system for detecting and classifying old electronic products via computer vision.
-\item Engineered production-ready RAG pipelines (Sensiq) leveraging vector search and LLMs to provide grounded, structured outputs and reliable tool calling for enterprise clients.
-\item Deployed and operated scalable AI applications on AWS, optimizing cloud infrastructure costs by configuring AWS SES with a Shared IP Pool for high-volume automated document processing.
-\item Built and integrated WebSocket and REST APIs to process high-volume IoT telemetry (10,000+ daily data points) for the Omnisense platform, securely connecting to external services and NoSQL databases.
-\item Maintained rigorous evaluations, quality checks, and testing protocols for Python-based intelligent document processing workflows, utilizing the Gmail API to reliably extract enterprise data.
-\item Managed system observability for distributed AI workflows using Prometheus and Grafana, monitoring tracing logs and production metrics to maintain 99.9\% uptime across cloud environments.
-\item Participated in continuous integration (CI/CD) pipelines and collaborative peer code reviews, ensuring standard engineering practices across cross-functional remote teams.
+\begin{itemize}[nosep, leftmargin=2em]
+\item \textbf{Sensiq RAG Chatbot:} Architected a production-ready RAG pipeline using OpenAI API and Pinecone vector database to deploy an intelligent site assistant, serving hundreds of daily enterprise interactions with 90\%+ semantic accuracy.
+\item \textbf{GitHub AI Agent \& Automation:} Built a stateful autonomous system using LangGraph and LangChain to scan enterprise repositories for vulnerabilities, reducing manual security review time by 60\% and streamlining Agile issue tracking.
+\item \textbf{Sighti CCTV AI Analytics:} Integrated real-time object detection and facial recognition models with existing CCTV infrastructure to generate business intelligence heatmaps and crowd flow analytics for retail environments.
+\item \textbf{AI-Powered Old Electronic Products Vision System:} Designed and deployed a Computer Vision model to detect and classify old electronic products in real-time; integrated the inference engine with MongoDB to track user deposits.
+\item \textbf{PII Redaction Pipeline:} Engineered a custom RAG-based privacy tool using Groq and Sentence Transformers to automatically identify and redact sensitive PII fields from legal PDFs, ensuring enterprise data compliance.
+\item \textbf{Intelligent Document Processing (GreenSecure):} Engineered an automated pipeline utilizing AI to extract and structure data from 3rd-party PDF reports via Gmail API; scaled delivery using an SMTP overlay with AWS SES.
+\item \textbf{Production MLOps \& Observability:} Deployed Grafana and Prometheus to monitor inference latency and EC2 health, maintaining 99.9\% uptime across mission-critical AI applications.
 \end{itemize}
 
-\section{Featured Projects}
-\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
-\item AI-Augmented Multi-Agent Orchestrator $|$ Python, FastAPI, LangGraph, GitHub Copilot \\
-Designed an asynchronous server-side framework utilizing generative AI models and parallel computing patterns to automate structured data synthesis, employing agentic loops to evaluate task-success criteria.
+\vspace{4pt}
 
-\item Enterprise Retrieval and Grounding Engine $|$ Node.js, Pinecone, React \\
-Developed a high-performance search backend combining REST APIs with multidimensional vector lookups, focusing on retrieval accuracy and data structure optimization to power LLM features.
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+\textbf{DLK Technologies --- Chennai} & & \hfill \color[HTML]{371e77} Jan 2023 -- Mar 2023 \\
+\color[HTML]{371e77}\textbf{Software Trainee (Data \& Logic)} & & \\
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=2em]
+\item Analyzed large datasets to refine logic models and algorithmic efficiency, reducing data processing errors by 30\%.
+\item Built visual dashboards and reporting tools, improving operational decision-making speed by 40\%.
+\end{itemize}
 
-\item Multi-Modal Telemetry Integration $|$ Python, Docker, WebSocket APIs \\
-Containerized a microservice built to manage real-time streams and internal enterprise data sources, translating unstructured inputs into standardized user-facing dashboards.
+\section{AI Projects}
+\begin{itemize}[nosep, leftmargin=2em]
+\item \textbf{Autonomous Multi-Agent Research Assistant ~|~ \textit{LangGraph ~$\cdot$~ Tavily ~$\cdot$~ OpenAI}} \\
+Developed a planning-based agent system that orchestrates multiple worker nodes to research web sources and synthesize technical reports, reducing manual research time by 70\%.
+\item \textbf{Enterprise-Grade RAG Engine ~|~ \textit{Hybrid Search ~$\cdot$~ Pinecone ~$\cdot$~ LangChain}} \\
+Built a retrieval system implementing hybrid search (BM25 + Vector) and Re-ranking to minimize hallucinations in legal document Q\&A, achieving a 25\% improvement in retrieval relevance.
+\item \textbf{Multi-modal Object Detection \& Accessibility System ~|~ \textit{TensorFlow ~$\cdot$~ OpenCV ~$\cdot$~ NLP}} \\
+Created a system with text-to-speech output for visually impaired users using NLP-based scene descriptions, improving navigation safety and user engagement by 50\%.
 \end{itemize}
 
 \section{Education}
 \begin{tabularx}{\linewidth}{ @{}l X r@{} }
-R.M.D Engineering College, Chennai & & Aug 2020 -- May 2024 \\
-B.Tech — Computer Science and Business Systems & & \textit{CGPA: 8.44/10}
+\color[HTML]{1C033C} \textbf{R.M.D Engineering College, Chennai} & & \hfill \color[HTML]{371e77} Aug 2020 -- May 2024 \\
+\color[HTML]{371e77} B.Tech — Computer Science and Business Systems & & \hfill \color[HTML]{4B28A4} \textit{\textbf{CGPA: 8.44/10}}
 \end{tabularx}
+
+\section{Certifications}
+\begin{itemize}[nosep, leftmargin=2em]
+\item \textbf{AWS Certified Solutions Architect – Associate} $|$ \textbf{TOEFL iBT Certificate} (English Proficiency)
+\item \textbf{Microsoft Career Essentials for Business Analytics} $|$ \textbf{Cisco Data Analytics Certificate}
+\end{itemize}
 
 \end{document}

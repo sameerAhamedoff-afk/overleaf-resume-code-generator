@@ -49,11 +49,11 @@ Before starting, ensure you have:
   - Company Name
   - Job Title / Role
   - Job Posting Link (or "Pasted Text")
-  - Path of the output file: `<Username>-<Company_Name>-<Role_Name>/resume.tex` (e.g., `Sameer-Google-AI_Engineer/resume.tex`) directly in the workspace root
+  - Path of the output file: `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex` (e.g., `outputs/Sameer-Google-AI_Engineer/resume.tex`)
   - Implemented keywords & key ATS points
 
 ### Step 6: Save the File
-- Create the separate directory in the root workspace (e.g., `Sameer-<Company_Name>-<Role_Name>/`) and save the final LaTeX code as `resume.tex` inside it.
+- Create the separate subfolder within `outputs/` (e.g., `outputs/Sameer-<Company_Name>-<Role_Name>/`) and save the final LaTeX code as `resume.tex` inside it.
 
 ### Step 7: Present Results to User
 Deliver the output in a clear, formatted presentation:
@@ -62,5 +62,5 @@ Deliver the output in a clear, formatted presentation:
      - **Required Keyword / Skill** (from JD)
      - **Status** (Already Present / Added during tailoring)
      - **Implementation Detail** (where it was integrated in the resume)
-2. **Resume Location**: Show the file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/Sameer-Google-AI_Engineer/resume.tex)`).
+2. **Resume Location**: Show the file link to the saved tailored LaTeX file (e.g. `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`).
 3. **Code block**: Show the complete LaTeX code in a copyable Markdown code block so the user can easily paste it directly into Overleaf.
