@@ -1,0 +1,100 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage{parskip} 
+\usepackage{hologo}
+
+\RequirePackage{color}
+\RequirePackage{graphicx}
+\usepackage[usenames,dvipsnames]{xcolor}
+\usepackage[scale=0.9, top=0.3in, bottom=0.3in, left=0.3in, right=0.3in]{geometry}
+
+\usepackage{tabularx}
+\usepackage{enumitem}
+
+\newcolumntype{C}{>{\centering\arraybackslash}X} 
+
+\usepackage{supertabular}
+\newlength{\fullcollw}
+\setlength{\fullcollw}{0.42\textwidth}
+
+\usepackage{titlesec}	
+\usepackage{multicol}
+\usepackage{multirow}
+
+\titleformat{\section}{\large\scshape\raggedright}{}{0em}{}[\titlerule]
+\titlespacing{\section}{1pt}{4pt}{3pt}
+
+\usepackage{fontawesome5}
+
+\usepackage[unicode, draft=false]{hyperref}
+
+\usepackage[normalem]{ulem}
+
+\usepackage{times}
+
+\begin{document}
+
+\pagestyle{empty} 
+
+\noindent
+\begin{minipage}[c]{0.22\textwidth}
+\raggedright
+\includegraphics[width=3.5cm]{Pic.png} 
+\end{minipage}%
+\begin{minipage}[c]{0.78\textwidth}
+\raggedright
+{\Huge Sameer Ahamed A} \\[6pt]
+AI and Fullstack Developer $|$ Node.js $\cdot$ React $\cdot$ Python $|$ Agentic AI Systems \\[4pt]
+\href{mailto:sameerahamedoff3@gmail.com}{{\faEnvelope} sameerahamedoff3@gmail.com} $|$
+\href{tel:+919080861209}{{\faMobile} +91-9080861209} $|$
+\href{https://www.linkedin.com/in/sameer-ahamed-338558310/}{{{\raisebox{-0.05\height}{\faLinkedin} LinkedIn}}} $|$
+Chennai, Tamil Nadu
+\end{minipage}
+\vspace{10pt}
+
+\section{Profile}
+Innovative AI and Fullstack Developer with practical experience designing, evaluating, and deploying production-quality agentic AI systems and cloud-native applications. Proficient in navigating code fluidly using GitHub Copilot to accelerate feature delivery while enforcing strict quality checks. Adept at building backend orchestration layers (Node.js, Python) and collaborating on React frontends to deliver end-to-end enterprise solutions. Proven track record of leveraging LLMs, retrieval systems (RAG), structured outputs, and major cloud platforms (AWS) to complete complex business tasks reliably.
+
+\section{Skills}
+\noindent
+Core Engineering: Node.js, Express.js, TypeScript, Python (FastAPI), React, Next.js, Data Structures and Algorithms, Object-Oriented Programming, RESTful and WebSocket APIs, System Design \\
+AI and Agentic Systems: GitHub Copilot, OpenAI API, LangChain, LangGraph, RAG architectures, LLMs, Tool Calling, Structured Outputs, Intelligent Automation \\
+Cloud and Infrastructure: AWS (EC2, S3, SES, Lambda), Docker Containerization, NGINX, MongoDB, PostgreSQL, CI/CD Pipelines \\
+Engineering Practices: Git/GitHub, Agile/Scrum Workflows, Jira, Code Reviews, System Observability (Prometheus, Grafana), Quality Evaluations
+
+\section{Work Experience}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+Mirobs Innovations — Remote / Chennai & & Nov 2024 -- Present \\
+AI and Fullstack Developer & & \\
+\end{tabularx}
+\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
+\item Designed, built, and evaluated AI-enabled agentic applications, utilizing GitHub Copilot to navigate generated code fluidly and accelerate production-grade feature delivery.
+\item Built a stateful GitHub AI agent using LangGraph and LangChain to autonomously scan enterprise repositories for vulnerabilities and automatically generate Jira tickets, streamlining Agile issue tracking workflows.
+\item Collaborated seamlessly across React frontends and Node.js backend orchestration layers to develop an AI-powered rewards system for detecting and classifying old electronic products via computer vision.
+\item Engineered production-ready RAG pipelines (Sensiq) leveraging vector search and LLMs to provide grounded, structured outputs and reliable tool calling for enterprise clients.
+\item Deployed and operated scalable AI applications on AWS, optimizing cloud infrastructure costs by configuring AWS SES with a Shared IP Pool for high-volume automated document processing.
+\item Built and integrated WebSocket and REST APIs to process high-volume IoT telemetry (10,000+ daily data points) for the Omnisense platform, securely connecting to external services and NoSQL databases.
+\item Maintained rigorous evaluations, quality checks, and testing protocols for Python-based intelligent document processing workflows, utilizing the Gmail API to reliably extract enterprise data.
+\item Managed system observability for distributed AI workflows using Prometheus and Grafana, monitoring tracing logs and production metrics to maintain 99.9\% uptime across cloud environments.
+\item Participated in continuous integration (CI/CD) pipelines and collaborative peer code reviews, ensuring standard engineering practices across cross-functional remote teams.
+\end{itemize}
+
+\section{Featured Projects}
+\begin{itemize}[nosep, leftmargin=1.5em, itemsep=2pt, parsep=0pt]
+\item AI-Augmented Multi-Agent Orchestrator $|$ Python, FastAPI, LangGraph, GitHub Copilot \\
+Designed an asynchronous server-side framework utilizing generative AI models and parallel computing patterns to automate structured data synthesis, employing agentic loops to evaluate task-success criteria.
+
+\item Enterprise Retrieval and Grounding Engine $|$ Node.js, Pinecone, React \\
+Developed a high-performance search backend combining REST APIs with multidimensional vector lookups, focusing on retrieval accuracy and data structure optimization to power LLM features.
+
+\item Multi-Modal Telemetry Integration $|$ Python, Docker, WebSocket APIs \\
+Containerized a microservice built to manage real-time streams and internal enterprise data sources, translating unstructured inputs into standardized user-facing dashboards.
+\end{itemize}
+
+\section{Education}
+\begin{tabularx}{\linewidth}{ @{}l X r@{} }
+R.M.D Engineering College, Chennai & & Aug 2020 -- May 2024 \\
+B.Tech — Computer Science and Business Systems & & \textit{CGPA: 8.44/10}
+\end{tabularx}
+
+\end{document}
