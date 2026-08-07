@@ -40,7 +40,7 @@ These skills are automatically discovered by Antigravity in this workspace. You 
    - Tailor the LaTeX code, incorporating missing keywords naturally into experience bullets and summaries.
    - Escape LaTeX characters to guarantee zero Overleaf compile errors.
    - Log the application details in `job_tracker.md`.
-   - Save the tailored code to `tailored_resumes/sameer_ahamed_<company>.tex`.
+   - Save the tailored code to `tailored_resumes/<Company_Name>-<Role_Name>/resume.tex`.
    - Output the raw LaTeX code block and display an **ATS Key Keywords & Mapping Details** table showing what was added and where.
 
 ### 2. Manage Templates Skill
