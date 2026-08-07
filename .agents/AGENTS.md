@@ -23,5 +23,5 @@ This workspace is designed to help the user generate and tailor resumes using La
 - **Maintain Contact Details**: Do not alter or lose the user's phone, email, LinkedIn, GitHub, or location unless specifically instructed.
 
 ## 4. UI/UX and Delivery
-- Always offer to save the generated code to a file (e.g., `tailored_resume.tex`) so the user can easily download it or copy it.
+- Always write/save the generated code to a separate directory inside the outputs folder: `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex` (e.g., `outputs/Sameer-Google-AI_Engineer/resume.tex`). Do not write it to a generic `tailored_resume.tex` file in the root.
 - Present the final LaTeX code in a clean, copyable Markdown code block.
