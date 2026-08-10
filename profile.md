@@ -83,11 +83,14 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 
 ---
 
-### DLK Technologies (Jan 2023 -- Mar 2023)
-**Role**: Software Trainee (Data & Logic)
+### DLK Technologies India Private Limited (May 2024 -- Oct 2024)
+**Role**: Intern
 
-- **Algorithmic Refinement**: Analyzed large datasets to refine logic models and algorithmic efficiency, reducing data processing errors by 30%.
-- **Operational Dashboards**: Built visual dashboards and reporting tools, improving operational decision-making speed by 40%.
+#### Data Analysis and Business Communications
+- **Algorithmic Logic Refinement**: Leveraged Python (Pandas/NumPy) to profile, clean, and analyze large-scale transactional datasets; refined algorithmic logic structures, reducing data processing errors by 30% and optimizing pipeline throughput.
+- **Interactive Dashboards**: Designed and deployed interactive visual dashboards and reporting tools using Streamlit and PowerBI, enabling real-time tracking of operational KPIs and improving stakeholder decision-making speed by 40%.
+- **ETL Optimization**: Streamlined automated ETL scripts and structured validation checks, establishing SMTP error alerts for proactive data anomaly logging.
+- **Analytical Communications**: Compiled and presented technical research summaries and performance dashboards to cross-functional engineering teams, aligning operations with core business metrics.
 
 ---
 
@@ -117,6 +120,4 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 
 ## Certifications
 - AWS Certified Solutions Architect – Associate
-- TOEFL iBT Certificate (English Proficiency, score valid)
-- Microsoft Career Essentials for Business Analytics
-- Cisco Data Analytics Certificate
+- Microsoft Certified: Azure AI Cloud Developer Associate

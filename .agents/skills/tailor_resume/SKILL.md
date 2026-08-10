@@ -35,12 +35,12 @@ Before starting, ensure you have:
   - **Required by the JD** but **missing or under-represented** in the master profile.
   - Target these keywords for inclusion in the tailored resume.
 
-### Step 4: Choose Template & Tailor LaTeX Code
-- Select the best template layout from `templates/` (e.g., `template-2.tex` for AI/ML roles, `template-3(Fullstack).tex` for React/Node/Fullstack roles).
+### Step 4: Choose Template & Tailor Resume Code
+- Select the best template layout from `templates/` (e.g., `template-2.tex` for AI/ML roles, `template-3(Fullstack).tex` for React/Node/Fullstack roles, or `Template-4.docx` for Word/PDF resume output).
 - Replace the profile summary, skills list, work experiences, and projects in the template with tailored versions from `profile.md`:
   - Incorporate the missing or underrepresented ATS keywords naturally into the summary, skills list, and experience bullet points.
-  - Maintain the template's LaTeX preamble, formatting commands, columns, and packages exactly.
-  - **CRITICAL**: Escape all special characters (`&` ➡️ `\&`, `%` ➡️ `\%`, `_` ➡️ `\_`, `$` ➡️ `\$`, `#` ➡️ `\#`, `{`/`}` ➡️ `\{`/`\}`) to prevent Overleaf compilation errors.
+  - If using LaTeX templates, maintain the template's LaTeX preamble, formatting commands, columns, and packages exactly and escape special characters (`&` ➡️ `\&`, `%` ➡️ `\%`, `_` ➡️ `\_`, etc.).
+  - If using the Template 4 layout, prepare a structured JSON object to feed into the Word resume generator.
 
 ### Step 5: Log the Entry in `job_tracker.md`
 - Append a new row to the table in `job_tracker.md`.
@@ -53,7 +53,15 @@ Before starting, ensure you have:
   - Implemented keywords & key ATS points
 
 ### Step 6: Save the File
-- Create the separate subfolder within `outputs/` (e.g., `outputs/Sameer-<Company_Name>-<Role_Name>/`) and save the final LaTeX code as `resume.tex` inside it.
+- Create the separate subfolder within `outputs/` (e.g., `outputs/Sameer-<Company_Name>-<Role_Name>/`).
+- **If a LaTeX template (1, 2, 3) is requested**: Save the final LaTeX code as `resume.tex` inside it.
+- **If Template 4 layout is explicitly requested**: Skip `.tex` file generation entirely.
+
+### Step 6b: Generate Word & PDF Resume (if Template-4.docx layout is requested or as secondary formats)
+- Create a structured JSON file `temp_resume.json` containing the tailored contact details, summary, key skills, tools & technologies, roles, projects, education, and certifications.
+- Run the python script to generate the Word resume and compile the PDF, ensuring the PDF file is named `Sameer_<role_name>.pdf` (with spaces replaced by underscores, e.g. `Sameer_AI_Engineer.pdf`):
+  `python .agents/scripts/generate_docx_resume.py --json temp_resume.json --output "outputs/Sameer-<Company_Name>-<Role_Name>/resume.docx" --pdf "outputs/Sameer-<Company_Name>-<Role_Name>/Sameer_<role_name>.pdf"`
+- Delete the temporary JSON file: `Remove-Item -Force temp_resume.json`.
 
 ### Step 7: Generate Cover Letter (Word Format)
 - Based on the tailored resume and the target Job Description, write a compelling and professional 3-4 paragraph cover letter.
@@ -71,7 +79,9 @@ Deliver the output in a clear, formatted presentation:
      - **Status** (Already Present / Added during tailoring)
      - **Implementation Detail** (where it was integrated in the resume)
 3. **Generated Files Locations**:
-   - Clickable link to the saved tailored LaTeX file: `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`
+   - Clickable link to the saved tailored LaTeX file (if compiled): `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`
+   - Clickable link to the saved tailored Word resume: `[resume.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.docx)`
+   - Clickable link to the saved tailored PDF resume: `[Sameer_AI_Engineer.pdf](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/Sameer_AI_Engineer.pdf)` (replacing `AI_Engineer` with the tailored role name).
    - Clickable link to the saved tailored Word cover letter file: `[cover_letter.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/cover_letter.docx)`
 4. **DO NOT output the full LaTeX code block or the cover letter text in the terminal.** They are already saved to the paths above.
 
