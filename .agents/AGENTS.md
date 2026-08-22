@@ -27,8 +27,8 @@ This workspace is designed to help the user generate and tailor resumes using La
 - If generating Word and PDF resumes, save them to the same output folder. The Word document must be named `resume.docx` and the PDF resume must be named `Sameer_<role_name>.pdf` (where spaces in the role name are replaced by underscores, e.g. `Sameer_AI_Engineer.pdf`).
 - **Do not print the complete LaTeX code block, JSON payloads, or cover letter text in the terminal response**.
 - In the final response, only present:
-  1. Clickable links to the generated files: `resume.tex` (if generated), `resume.docx`, `Sameer_<role_name>.pdf`, and `cover_letter.docx`.
-  2. The job match rate (%) compared to your profile (both before and after tailoring).
+  1. Clickable links to the generated files: `resume.tex` (if generated), `resume.docx`, `Sameer_<role_name>.pdf`, `cover_letter.docx`, and `rating_report.md`.
+  2. The job match rate (%) compared to your profile (both before and after tailoring) evaluated using the `.agents/scripts/rate_resume.py` script.
   3. A structured table displaying key keywords used/implemented for this JD.
 
 ## 5. Token Efficiency & Cost Optimization (Reduced Token Usage)

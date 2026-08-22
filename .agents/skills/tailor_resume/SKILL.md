@@ -29,7 +29,10 @@ Before starting, ensure you have:
 - Read `profile.md` in the workspace root. If it is missing, check `templates/template-2.tex` or `templates/template-3(Fullstack).tex` to reconstruct it, write it to `profile.md`, and then read it.
 - Retrieve Sameer's contact details, skills, experiences, and project history.
 
-### Step 3: Perform ATS Gap Analysis
+### Step 3: Perform ATS Gap Analysis & Calculate Initial Match Rate
+- Save the Job Description content to a temporary text file (e.g. `temp_jd.txt`).
+- Calculate the initial match rate before tailoring by running the rating script against the master profile:
+  `python .agents/scripts/rate_resume.py --resume profile.md --jd temp_jd.txt`
 - Compare the JD requirements with the skills and achievements listed in `profile.md`.
 - Identify key ATS keywords (languages, frameworks, tools, methodologies, action verbs) that are:
   - **Required by the JD** but **missing or under-represented** in the master profile.
@@ -70,9 +73,17 @@ Before starting, ensure you have:
   `python .agents/scripts/generate_docx.py --output "outputs/<Username>-<Company_Name>-<Role_Name>/cover_letter.docx" --name "Sameer Ahamed A" --email "sameerahamedoff3@gmail.com" --phone "+91-9080861209" --linkedin "https://www.linkedin.com/in/sameer-ahamed-338558310/" --company "<Company_Name>" --role "<Role_Name>" --content_file temp_cover_letter.txt`
 - Delete the temporary file `temp_cover_letter.txt` by running a powershell command: `Remove-Item -Force temp_cover_letter.txt`.
 
+### Step 7b: Calculate Tailored Match Rate & Save Report
+- Evaluate the tailored resume against the JD to calculate the final match rate and generate the rating reports:
+  - **For LaTeX resumes:**
+    `python .agents/scripts/rate_resume.py --resume "outputs/Sameer-<Company_Name>-<Role_Name>/resume.tex" --jd temp_jd.txt --markdown-output "outputs/Sameer-<Company_Name>-<Role_Name>/rating_report.md" --json-output "outputs/Sameer-<Company_Name>-<Role_Name>/rating_report.json"`
+  - **For Word resumes:**
+    `python .agents/scripts/rate_resume.py --resume "outputs/Sameer-<Company_Name>-<Role_Name>/resume.docx" --jd temp_jd.txt --markdown-output "outputs/Sameer-<Company_Name>-<Role_Name>/rating_report.md" --json-output "outputs/Sameer-<Company_Name>-<Role_Name>/rating_report.json"`
+- Clean up the temporary JD file: `Remove-Item -Force temp_jd.txt`.
+
 ### Step 8: Present Results to User
 Deliver the output in a clear, formatted presentation:
-1. **Job Match Rate**: Show the calculated match rate percentage of the JD to the profile before tailoring vs. after tailoring (e.g. "Initial Match Rate: 65% | Tailored Match Rate: 98%").
+1. **Job Match Rate**: Show the calculated match rate percentage of the JD to the profile before tailoring vs. after tailoring (using output from `rate_resume.py`).
 2. **ATS Keywords Table**:
    - Provide a table detailing:
      - **Required Keyword / Skill** (from JD)
@@ -83,6 +94,7 @@ Deliver the output in a clear, formatted presentation:
    - Clickable link to the saved tailored Word resume: `[resume.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.docx)`
    - Clickable link to the saved tailored PDF resume: `[Sameer_AI_Engineer.pdf](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/Sameer_AI_Engineer.pdf)` (replacing `AI_Engineer` with the tailored role name).
    - Clickable link to the saved tailored Word cover letter file: `[cover_letter.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/cover_letter.docx)`
+   - Clickable link to the generated rating report: `[rating_report.md](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/rating_report.md)`
 4. **DO NOT output the full LaTeX code block or the cover letter text in the terminal.** They are already saved to the paths above.
 
 
