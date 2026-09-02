@@ -51,7 +51,7 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 
 ## Work Experience
 
-### Mirobs Innovations (Nov 2024 -- Present)
+### Mirobs Innovations (Nov 2024 -- April 2026)
 **Roles**: AI Engineer / AI and Fullstack Developer
 
 #### RAG & Vector Search
@@ -119,5 +119,4 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 ---
 
 ## Certifications
-- AWS Certified Solutions Architect – Associate
-- Microsoft Certified: Azure AI Cloud Developer Associate
+Microsoft Certified: Azure AI Fundamentals (AI-901)

@@ -64,9 +64,20 @@ def clean_project_name(name, company_name):
         clean = clean.lstrip(" -–—|:").strip()
     return clean
 
-def generate_resume(data_path, output_path):
+def generate_resume(data_path, output_path, include_certifications=None):
     with open(data_path, 'r', encoding='utf-8') as f:
         data = json.load(f)
+
+    # Determine whether to include certifications
+    if include_certifications is None:
+        if "include_certifications" in data:
+            include_certifications = bool(data["include_certifications"])
+        elif "enable_certifications" in data:
+            include_certifications = bool(data["enable_certifications"])
+        elif "certifications_enabled" in data:
+            include_certifications = bool(data["certifications_enabled"])
+        else:
+            include_certifications = True
 
     doc = Document()
 
@@ -328,32 +339,43 @@ def generate_resume(data_path, output_path):
         run_rest.font.size = Pt(10)
 
     # 8. Certifications
-    add_section_heading("CERTIFICATIONS")
-    for cert in data["certifications"]:
-        p_cert = doc.add_paragraph()
-        p_cert.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-        p_cert.paragraph_format.left_indent = Inches(0.25)
-        p_cert.paragraph_format.first_line_indent = Inches(-0.25)
-        p_cert.paragraph_format.space_before = Pt(0)
-        p_cert.paragraph_format.space_after = Pt(0)
-        p_cert.paragraph_format.line_spacing = 1.1
+    if include_certifications and data.get("certifications"):
+        add_section_heading("CERTIFICATIONS")
+        for cert in data["certifications"]:
+            p_cert = doc.add_paragraph()
+            p_cert.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+            p_cert.paragraph_format.left_indent = Inches(0.25)
+            p_cert.paragraph_format.first_line_indent = Inches(-0.25)
+            p_cert.paragraph_format.space_before = Pt(0)
+            p_cert.paragraph_format.space_after = Pt(0)
+            p_cert.paragraph_format.line_spacing = 1.1
 
-        pPr = p_cert._p.get_or_add_pPr()
-        numPr = parse_xml(r'<w:numPr %s><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' % nsdecls('w'))
-        pPr.append(numPr)
+            pPr = p_cert._p.get_or_add_pPr()
+            numPr = parse_xml(r'<w:numPr %s><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' % nsdecls('w'))
+            pPr.append(numPr)
 
-        run_cname = p_cert.add_run(cert["name"])
-        run_cname.font.name = 'Calibri'
-        run_cname.font.size = Pt(10)
-        run_cname.bold = True
-        run_cname.font.color.rgb = RGBColor(0x00, 0xB0, 0xF0) # 00b0f0 light blue
+            if isinstance(cert, dict):
+                cert_name = cert.get("name", "")
+                cert_org = cert.get("org", "")
+            else:
+                cert_name = str(cert)
+                cert_org = ""
 
-        run_corg = p_cert.add_run(f" | {cert['org']}")
-        run_corg.font.name = 'Calibri'
-        run_corg.font.size = Pt(10)
+            run_cname = p_cert.add_run(cert_name)
+            run_cname.font.name = 'Calibri'
+            run_cname.font.size = Pt(10)
+            run_cname.bold = True
+            run_cname.font.color.rgb = RGBColor(0x00, 0xB0, 0xF0) # 00b0f0 light blue
+
+            if cert_org:
+                run_corg = p_cert.add_run(f" | {cert_org}")
+                run_corg.font.name = 'Calibri'
+                run_corg.font.size = Pt(10)
 
     # Save DOCX
-    os.makedirs(os.path.dirname(output_path), exist_ok=True)
+    out_dir = os.path.dirname(output_path)
+    if out_dir:
+        os.makedirs(out_dir, exist_ok=True)
     doc.save(output_path)
     print(f"Word resume successfully generated at: {output_path}")
 
@@ -409,8 +431,23 @@ if __name__ == '__main__':
     parser.add_argument("--output", required=True, help="Output .docx file path")
     parser.add_argument("--pdf", required=False, help="Optional output .pdf file path")
 
+    cert_group = parser.add_mutually_exclusive_group()
+    cert_group.add_argument(
+        "--certifications", "--include-certifications",
+        dest="include_certifications",
+        action="store_true",
+        default=None,
+        help="Explicitly enable/include certifications in the generated resume"
+    )
+    cert_group.add_argument(
+        "--no-certifications", "--exclude-certifications", "--avoid-certifications",
+        dest="include_certifications",
+        action="store_false",
+        help="Avoid mentioning/exclude certifications in the generated resume"
+    )
+
     args = parser.parse_args()
-    generate_resume(args.json, args.output)
+    generate_resume(args.json, args.output, include_certifications=args.include_certifications)
 
     if args.pdf:
         with open(args.json, 'r', encoding='utf-8') as f:

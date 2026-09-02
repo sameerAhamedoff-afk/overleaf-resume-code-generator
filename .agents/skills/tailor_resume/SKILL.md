@@ -61,9 +61,10 @@ Before starting, ensure you have:
 - **If Template 4 layout is explicitly requested**: Skip `.tex` file generation entirely.
 
 ### Step 6b: Generate Word & PDF Resume (if Template-4.docx layout is requested or as secondary formats)
-- Create a structured JSON file `temp_resume.json` containing the tailored contact details, summary, key skills, tools & technologies, roles, projects, education, and certifications.
+- Create a structured JSON file `temp_resume.json` containing the tailored contact details, summary, key skills, tools & technologies, roles, projects, education, and certifications (optional: `"include_certifications": false` to exclude).
 - Run the python script to generate the Word resume and compile the PDF, ensuring the PDF file is named `Sameer_<role_name>.pdf` (with spaces replaced by underscores, e.g. `Sameer_AI_Engineer.pdf`):
   `python .agents/scripts/generate_docx_resume.py --json temp_resume.json --output "outputs/Sameer-<Company_Name>-<Role_Name>/resume.docx" --pdf "outputs/Sameer-<Company_Name>-<Role_Name>/Sameer_<role_name>.pdf"`
+  *(Use `--no-certifications` / `--exclude-certifications` to avoid mentioning certificates, or `--include-certifications` / `--certifications` to explicitly include them).*
 - Delete the temporary JSON file: `Remove-Item -Force temp_resume.json`.
 
 ### Step 7: Generate Cover Letter (Word Format)

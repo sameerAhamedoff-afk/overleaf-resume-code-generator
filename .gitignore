@@ -26,3 +26,8 @@ tailored_resume.tex
 *.toc
 *.vrb
 *.xdv
+
+# Python Cache
+__pycache__/
+*.py[cod]
+*$py.class
