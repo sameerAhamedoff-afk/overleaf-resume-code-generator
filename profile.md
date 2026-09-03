@@ -55,12 +55,12 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 **Roles**: AI Engineer / AI and Fullstack Developer
 
 #### RAG & Vector Search
-- **Sensiq Chatbot**: Architected a production-ready RAG pipeline using OpenAI API and Pinecone vector database to deploy an intelligent site assistant, serving hundreds of daily enterprise interactions with 90%+ semantic accuracy.
-- **Structured RAG**: Engineered production-ready RAG pipelines (Sensiq) leveraging vector search and LLMs to provide grounded, structured outputs and reliable tool calling for enterprise clients.
+- **Beeha Intelligent Site Assistant**: Architected a production-ready RAG pipeline for Beeha using OpenAI API and Pinecone vector database to deploy an intelligent site assistant, serving hundreds of daily enterprise interactions with 90%+ semantic accuracy.
+- **Beeha Structured RAG Engine**: Engineered production-ready RAG pipelines for Beeha leveraging vector search and LLMs to provide grounded, deterministic structured outputs and reliable tool calling for enterprise clients.
 
 #### AI Agents & Automation
-- **GitHub Agent**: Built a stateful autonomous system (GitHub AI Agent) using LangGraph and LangChain to scan enterprise repositories for vulnerabilities and automatically generate Jira tickets, reducing manual security review time by 60% and streamlining Agile workflows.
-- **Agent Evaluation**: Designed, built, and evaluated AI-enabled agentic applications, utilizing GitHub Copilot to navigate generated code fluidly and accelerate production-grade feature delivery.
+- **Beeha DevSecOps AI Agent**: Built a stateful autonomous agentic system for Beeha using LangGraph and LangChain to scan enterprise repositories for vulnerabilities, execute multi-step reasoning, and automatically generate Jira tickets, reducing manual security review time by 60% and streamlining Agile workflows.
+- **Beeha Agentic Applications & Evals**: Designed, built, and evaluated AI-enabled agentic applications for Beeha, establishing evaluation frameworks to benchmark output quality and utilizing GitHub Copilot to navigate generated code fluidly and accelerate production-grade feature delivery.
 
 #### Computer Vision & Fullstack Integration
 - **Sighti CCTV AI Analytics**: Integrated real-time object detection and facial recognition models with existing CCTV infrastructure to generate business intelligence heatmaps and crowd flow analytics for retail environments.
@@ -96,13 +96,15 @@ Innovative AI and Fullstack Developer with practical experience designing, evalu
 
 ## Featured Projects
 
-### Stateful AI Agent Orchestration / Multi-Agent Research Assistant
+### Beeha Multi-Agent Autonomous Assistant / Agent Orchestration
+- **Company / Client**: Beeha
 - **Tech Stack**: Python, FastAPI, LangGraph, Tavily API, OpenAI API, GitHub Copilot
-- **Description**: Developed a planning-based agent system that orchestrates multiple worker nodes to research web sources and synthesize technical reports, reducing manual research time by 70%. Implemented memory systems and complex tool-calling mechanisms, complete with an eval story to track multi-step reasoning reliability.
+- **Description**: Developed a planning-based multi-agent system for Beeha that orchestrates multiple worker nodes to research web sources and synthesize technical reports, reducing manual research time by 70%. Implemented persistent memory systems, complex tool-calling mechanisms, and an eval framework to track multi-step reasoning reliability.
 
-### Enterprise-Grade RAG Engine / Enterprise Retrieval and Grounding
+### Beeha Enterprise RAG & Knowledge Grounding Engine
+- **Company / Client**: Beeha
 - **Tech Stack**: Node.js, Express.js, Pinecone, React, LangChain
-- **Description**: Built a retrieval system implementing hybrid search (BM25 + Vector) and Re-ranking to minimize hallucinations in legal document Q&A, achieving a 25% improvement in retrieval relevance. Developed a high-performance search backend combining REST APIs with multidimensional vector lookups, focusing on retrieval accuracy and data structure optimization to power LLM features.
+- **Description**: Built a high-performance retrieval and grounding system for Beeha implementing hybrid search (BM25 + Vector) and re-ranking to minimize hallucinations in complex document Q&A, achieving a 25% improvement in retrieval relevance. Developed a high-performance search backend combining REST APIs with multidimensional vector lookups, focusing on retrieval accuracy and data structure optimization to power LLM features.
 
 ### Multi-modal Object Detection & Accessibility / Telemetry Integration
 - **Tech Stack**: Python, TensorFlow, OpenCV, NLP, Docker, WebSocket APIs
