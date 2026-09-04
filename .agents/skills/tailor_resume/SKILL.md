@@ -3,47 +3,61 @@ name: Tailor Resume
 description: centralizes the resume tailoring workflow using a master profile (profile.md), JDs (text/URL), ATS keyword gap mapping, templates, and job application tracking.
 ---
 
-# Skill: Tailor Resume (ATS-Optimized & Tracked)
+# Skill: Tailor Resume (Veteran Hiring Manager Review & ATS Optimization)
 
-Use this skill when the user wants to generate a highly customized, ATS-aligned LaTeX resume for a specific job application, while logging the request in the tracking history.
+In this skill, you act as a **Veteran Technical Hiring Manager & Principal Engineering Screener** reviewing job applications for Tier-1 companies and high-growth AI teams. Your objective is not merely mechanical keyword matching, but critically dissecting the Job Description (JD), decoding the hiring team's unspoken technical requirements, strategically bridging keyword gaps from the candidate's master profile (`profile.md`), and producing an elite, ATS-optimized resume.
 
-## inputs & setup
+## Inputs & Setup
 Before starting, ensure you have:
-1. **Job Description (JD)**: The user will paste raw text or provide a job posting URL.
+1. **Job Description (JD)**: Raw text or a job posting URL.
 2. **Master Profile**: The master experience database at `profile.md` in the workspace root.
-3. **Templates**: LaTeX layouts stored in the `templates/` folder (e.g. `template-2.tex` for AI-focused, `template-3(Fullstack).tex` for Fullstack-focused, `template-1-Image.tex`).
+3. **Templates**: LaTeX layouts in `templates/` (e.g. `template-2.tex` for AI-focused, `template-3(Fullstack).tex` for Fullstack-focused, `template-1-Image.tex`) or `Template-4.docx` for Word/PDF.
 
 ---
 
 ## Tailoring Workflow
 
-### Step 1: Ingest and Analyze the Job Description (JD)
+### Step 1: Ingest & Deconstruct the Job Description (The Hiring Manager's Technical Breakdown)
 - **If a Job URL is provided**:
   - Fetch page contents using `read_url_content` or `browser_subagent`.
-  - Extract the Job Title, Company Name, Job Posting Link, and the full job description.
+  - Extract the Job Title, Company Name, Job Posting Link, and core job text.
 - **If raw text is provided**:
-  - Extract/infer Job Title, Company Name (ask the user for these if not clearly visible in the text).
-- Summarize the top 5-10 core skills, technologies, and methodologies required by this JD.
+  - Extract/infer Job Title and Company Name (ask if ambiguous).
+- **Hiring Manager Technical Deconstruction**:
+  - **Core Problem Domain**: What is the engineering team actually trying to ship? (e.g., autonomous agents, enterprise RAG, high-throughput document extraction, real-time CV, event-driven microservices).
+  - **Trendy vs. Foundational Balance**: Highlight flashy frameworks (LangGraph, Bedrock, OpenAI) *AND* pull out the unspoken foundational requirements (System Design, Asynchronous Processing, Database Optimization, Observability, Uptime).
+  - **Strategic Corporate Target Title**: Formulate a conventional, high-search-volume corporate headline (e.g., `Agentic AI Engineer | Generative AI Developer`, `AI Engineer`) that avoids recruiter exclusion filters.
 
 ### Step 2: Read the Master Profile
-- Read `profile.md` in the workspace root. If it is missing, check `templates/template-2.tex` or `templates/template-3(Fullstack).tex` to reconstruct it, write it to `profile.md`, and then read it.
-- Retrieve Sameer's contact details, skills, experiences, and project history.
+- Read `profile.md` in the workspace root. If missing, check `templates/template-2.tex` or `templates/template-3(Fullstack).tex` to reconstruct it.
+- Audit Sameer's contact details, technical skills, production experiences, and project history.
 
-### Step 3: Perform ATS Gap Analysis & Calculate Initial Match Rate
+### Step 3: ATS Gap Analysis & Hiring Manager Keyword Curation
 - Save the Job Description content to a temporary text file (e.g. `temp_jd.txt`).
-- Calculate the initial match rate before tailoring by running the rating script against the master profile:
+- Calculate the initial match rate before tailoring:
   `python .agents/scripts/rate_resume.py --resume profile.md --jd temp_jd.txt`
-- Compare the JD requirements with the skills and achievements listed in `profile.md`.
-- Identify key ATS keywords (languages, frameworks, tools, methodologies, action verbs) that are:
-  - **Required by the JD** but **missing or under-represented** in the master profile.
-  - Target these keywords for inclusion in the tailored resume.
+- **Hiring Manager Keyword Strategy**:
+  - Group required keywords into four strategic buckets:
+    1. **Agentic & Generative AI**: LangGraph, LangChain, AWS Bedrock, RAG, Semantic Search, Re-ranking, Structured Outputs, Tool Calling, Hallucination Guardrails.
+    2. **Backend & Architecture Foundations**: System Design, Asynchronous Processing, Python (FastAPI), Node.js, REST APIs, Microsoft Graph API, Event-Driven Architecture, SQL, PostgreSQL, MongoDB.
+    3. **Cloud, Infrastructure & DevOps**: AWS (ECS/Fargate, Lambda, SQS, SNS, S3, SES), Docker, Git, CI/CD (GitHub Actions), Linux/Unix.
+    4. **Observability, Testing & Metrics**: Prometheus, Grafana, AI Evaluation Frameworks, TDD, 99.9% Uptime.
+  - Map which skills are missing or under-represented in `profile.md` and target them for organic, truthful inclusion.
 
-### Step 4: Choose Template & Tailor Resume Code
-- Select the best template layout from `templates/` (e.g., `template-2.tex` for AI/ML roles, `template-3(Fullstack).tex` for React/Node/Fullstack roles, or `Template-4.docx` for Word/PDF resume output).
-- Replace the profile summary, skills list, work experiences, and projects in the template with tailored versions from `profile.md`:
-  - Incorporate the missing or underrepresented ATS keywords naturally into the summary, skills list, and experience bullet points.
-  - If using LaTeX templates, maintain the template's LaTeX preamble, formatting commands, columns, and packages exactly and escape special characters (`&` ➡️ `\&`, `%` ➡️ `\%`, `_` ➡️ `\_`, etc.).
-  - If using the Template 4 layout, prepare a structured JSON object to feed into the Word resume generator.
+### Step 4: Craft the Tailored Resume (Hiring Manager Precision)
+- Select the best template layout from `templates/` (e.g., `template-2.tex`, `template-3(Fullstack).tex`, or Template 4 layout).
+- **Professional Summary**:
+  - Craft a 3-4 sentence high-impact summary. Lead with candidate's years of experience, core production focus, architecture patterns (e.g., event-driven microservices, RAG, autonomous agents), and verified metrics (e.g., 99.9% uptime).
+- **Technical Skills (Eliminate Key-Value Walls)**:
+  - Organize strictly under `TECHNICAL SKILLS`.
+  - Format each category as `<Category Name>: Item 1, Item 2, Item 3` (comma-separated, strictly NO pipeline `|` dividers inside skills).
+- **Professional Experience (Google XYZ Formula)**:
+  - Begin every bullet point with a decisive engineering action verb (*Architected, Engineered, Deployed, Streamlined, Implemented*).
+  - Structure using Google's **XYZ formula**: *Accomplished [X] as measured by [Y] by doing [Z]*.
+  - Weave target keywords naturally into production realities (e.g., integrating OCR, vector search, or Fargate microservices).
+- **LaTeX Integrity & Character Escaping**:
+  - If compiling LaTeX: preserve preamble, escape special characters (`\&`, `\%`, `\_`, `\$`, `\#`, `\{`, `\}`).
+- If using Template 4 (Word/PDF): prepare the clean ATS JSON payload.
 
 ### Step 5: Log the Entry in `job_tracker.md`
 - Append a new row to the table in `job_tracker.md`.
@@ -61,7 +75,11 @@ Before starting, ensure you have:
 - **If Template 4 layout is explicitly requested**: Skip `.tex` file generation entirely.
 
 ### Step 6b: Generate Word & PDF Resume (if Template-4.docx layout is requested or as secondary formats)
-- Create a structured JSON file `temp_resume.json` containing the tailored contact details, summary, key skills, tools & technologies, roles, projects, education, and certifications (optional: `"include_certifications": false` to exclude).
+- Create a structured JSON file `temp_resume.json` adhering to strict ATS formatting guidelines:
+  - **No Key-Value Walls**: Do not use pipelines (`|`) to join skills. Use `technical_skills` mapping each category to a comma-separated list of items (e.g. `"AI Frameworks": "LangGraph, LangChain, OpenAI..."`).
+  - **Clean Contact Info**: No unicode emojis or icons (`phone`, `email`, `location`, `linkedin`, `github`).
+  - **Roles with Bullets**: Supply `"bullets": [...]` directly on each role object in `"roles"`.
+  - **Sections**: Include `"name"`, `"headline"` (or `"role"`), `"phone"`, `"email"`, `"location"`, `"linkedin"`, `"summary"`, `"technical_skills"`, `"roles"`, `"education"`, and optional `"certifications"` (or `"include_certifications": false`).
 - Run the python script to generate the Word resume and compile the PDF, ensuring the PDF file is named `Sameer_<role_name>.pdf` (with spaces replaced by underscores, e.g. `Sameer_AI_Engineer.pdf`):
   `python .agents/scripts/generate_docx_resume.py --json temp_resume.json --output "outputs/Sameer-<Company_Name>-<Role_Name>/resume.docx" --pdf "outputs/Sameer-<Company_Name>-<Role_Name>/Sameer_<role_name>.pdf"`
   *(Use `--no-certifications` / `--exclude-certifications` to avoid mentioning certificates, or `--include-certifications` / `--certifications` to explicitly include them).*
@@ -85,11 +103,12 @@ Before starting, ensure you have:
 ### Step 8: Present Results to User
 Deliver the output in a clear, formatted presentation:
 1. **Job Match Rate**: Show the calculated match rate percentage of the JD to the profile before tailoring vs. after tailoring (using output from `rate_resume.py`).
-2. **ATS Keywords Table**:
-   - Provide a table detailing:
-     - **Required Keyword / Skill** (from JD)
+2. **Hiring Manager Keyword & Positioning Table**:
+   - Provide a structured table detailing:
+     - **Required / High-Yield Keyword** (from JD & Hiring Manager Analysis)
+     - **Engineering Category** (e.g. Core AI/Agents, Backend & System Design, Cloud/DevOps, Observability)
      - **Status** (Already Present / Added during tailoring)
-     - **Implementation Detail** (where it was integrated in the resume)
+     - **Strategic Implementation** (where and how it was integrated into Summary, Technical Skills, or Experience bullets using XYZ format)
 3. **Generated Files Locations**:
    - Clickable link to the saved tailored LaTeX file (if compiled): `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`
    - Clickable link to the saved tailored Word resume: `[resume.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.docx)`
