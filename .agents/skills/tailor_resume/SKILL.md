@@ -46,15 +46,23 @@ Before starting, ensure you have:
 
 ### Step 4: Craft the Tailored Resume (Hiring Manager Precision)
 - Select the best template layout from `templates/` (e.g., `template-2.tex`, `template-3(Fullstack).tex`, or Template 4 layout).
+- **Section Order Requirement**:
+  - Resumes must strictly position `PROFESSIONAL EXPERIENCE` before `TECHNICAL SKILLS`.
+  - Hierarchy: `PROFESSIONAL SUMMARY` ➡️ `PROFESSIONAL EXPERIENCE` ➡️ `TECHNICAL SKILLS` ➡️ `EDUCATION` (followed by `PROJECTS` and `CERTIFICATIONS`).
 - **Professional Summary**:
   - Craft a 3-4 sentence high-impact summary. Lead with candidate's years of experience, core production focus, architecture patterns (e.g., event-driven microservices, RAG, autonomous agents), and verified metrics (e.g., 99.9% uptime).
-- **Technical Skills (Eliminate Key-Value Walls)**:
-  - Organize strictly under `TECHNICAL SKILLS`.
-  - Format each category as `<Category Name>: Item 1, Item 2, Item 3` (comma-separated, strictly NO pipeline `|` dividers inside skills).
-- **Professional Experience (Google XYZ Formula)**:
-  - Begin every bullet point with a decisive engineering action verb (*Architected, Engineered, Deployed, Streamlined, Implemented*).
-  - Structure using Google's **XYZ formula**: *Accomplished [X] as measured by [Y] by doing [Z]*.
+- **Professional Experience (What-How-Why Storytelling & Google XYZ Formula)**:
+  - **Bold Product-Style Subtitle Requirement**: Every bullet point must lead with a concise **bold subtitle formatted like a product, system, engine, or platform name** (e.g. `**FinTax Copilot:**`, `**Beeha DevSecOps Agent:**`, `**DocuShield PII Redactor:**`, `**Sighti Vision Heatmaps:**`, `**Omnisense Telemetry Gateway:**`, `**Sentinel Observability Suite:**` in Markdown/DOCX, or `\item \textbf{Beeha DevSecOps Agent:}...` in LaTeX). Avoid generic labels (e.g. "Monitoring setup", "Data Processing", "RAG Pipeline"); brand each bullet as a concrete shipped product, service, or tool.
+  - Focus each bullet point strictly on business value, engineering scale, and tangible outcomes rather than simple daily tasks or passive responsibility lists.
+  - **Explicit Technology Informing**: When detailing the implementation, always explicitly name and highlight the concrete technologies and frameworks used (e.g., LangChain, LangGraph, FastAPI, Pinecone, Docker, AWS Bedrock, PostgreSQL) within the "How" and narrative description.
+  - Structure every bullet point using the **What-How-Why** storytelling framework synthesized with Google's **XYZ formula** (*Accomplished [X] as measured by [Y] by doing [Z]*):
+    - **What**: The specific engineering action, product, or system capability delivered (initiating with a decisive active verb like *Architected, Engineered, Deployed, Streamlined, Spearheaded*).
+    - **How**: The explicit tools, frameworks, architectural patterns, algorithms, or methodologies used (e.g., *built using LangChain and LangGraph for multi-agent state orchestration, async FastAPI workers, Docker, Pinecone vector indexing, hybrid RAG*). Always inform the exact tech stack utilized.
+    - **Why**: The measurable result, business impact, cost/latency reduction, reliability metric, or the "so what?" answering why the work mattered (e.g., *slashing latency by 45%, eliminating manual overhead by 60%, maintaining 99.9% production uptime*).
   - Weave target keywords naturally into production realities (e.g., integrating OCR, vector search, or Fargate microservices).
+- **Technical Skills (Eliminate Key-Value Walls)**:
+  - Organize strictly under `TECHNICAL SKILLS` (positioned after Professional Experience).
+  - Format each category as `<Category Name>: Item 1, Item 2, Item 3` (comma-separated, strictly NO pipeline `|` dividers inside skills).
 - **LaTeX Integrity & Character Escaping**:
   - If compiling LaTeX: preserve preamble, escape special characters (`\&`, `\%`, `\_`, `\$`, `\#`, `\{`, `\}`).
 - If using Template 4 (Word/PDF): prepare the clean ATS JSON payload.
@@ -108,7 +116,7 @@ Deliver the output in a clear, formatted presentation:
      - **Required / High-Yield Keyword** (from JD & Hiring Manager Analysis)
      - **Engineering Category** (e.g. Core AI/Agents, Backend & System Design, Cloud/DevOps, Observability)
      - **Status** (Already Present / Added during tailoring)
-     - **Strategic Implementation** (where and how it was integrated into Summary, Technical Skills, or Experience bullets using XYZ format)
+     - **Strategic Implementation** (where and how it was integrated into Summary, Technical Skills, or Experience bullets using What-How-Why / XYZ storytelling format)
 3. **Generated Files Locations**:
    - Clickable link to the saved tailored LaTeX file (if compiled): `[resume.tex](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.tex)`
    - Clickable link to the saved tailored Word resume: `[resume.docx](file:///c:/Users/user/Desktop/job-ai/overleaf-resume-code-generator/outputs/Sameer-Google-AI_Engineer/resume.docx)`
