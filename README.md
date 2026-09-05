@@ -1,64 +1,89 @@
-# Overleaf Resume Code Generator 🚀
+# Antigravity AI Resume Architect & ATS Optimization Engine 🚀
 
-An Antigravity-driven workspace designed to take existing LaTeX resume templates and generate customized, ATS-aligned resumes tailored to specific job descriptions in seconds. Ready to copy and paste directly into **Overleaf**!
+An autonomous, agentic workspace powered by Google Antigravity designed to decode Job Descriptions (JDs), eliminate ATS keyword gaps, and generate interview-winning, multi-format resumes (**LaTeX / Overleaf**, **Word .docx**, and **PDF**) alongside customized cover letters in seconds.
+
+---
+
+## 🌟 Key Features & Philosophy
+
+- **Veteran Hiring Manager Philosophy**: Decodes unspoken engineering requirements (System Design, Async Processing, Event-Driven Architecture, Observability) and eliminates recruiter exclusion filters by aligning conventional corporate target titles.
+- **Product-Style Storytelling & Explicit Tech Stack**: Bullet points follow the **What-How-Why (Google XYZ)** formula, leading with bold product/platform names (e.g., `**Beeha DevSecOps Agent:**`, `**DocuShield PII Redactor:**`, `**Sentinel Observability Suite:**`) and explicitly highlighting concrete technologies (LangChain, LangGraph, FastAPI, Pinecone, Docker, AWS, etc.).
+- **Multi-Format Output Generation**:
+  - **LaTeX / Overleaf**: Pixel-perfect `.tex` files with character escaping (`\&`, `\%`, `\_`, `\$`, `\#`, `\{`, `\}`).
+  - **Microsoft Word (.docx)**: Clean ATS-compliant layout generated via `python-docx` with custom indentations and bullet hierarchies.
+  - **Compiled PDF**: Automated conversion to `Sameer_<role_name>.pdf` via Word headless automation.
+  - **Cover Letters**: Tailored, professional Word documents (`cover_letter.docx`).
+- **Strict ATS Optimization Engine**:
+  - **Enforced Section Sequence**: `PROFESSIONAL SUMMARY` ➡️ `PROFESSIONAL EXPERIENCE` ➡️ `TECHNICAL SKILLS` ➡️ `EDUCATION`.
+  - **No Pipe-Delimited Walls**: Formats technical skills as clean, comma-separated category blocks to preserve linear ATS parser indexing.
+  - **Emoji-Free Headers**: Clean text contact lines without icons or emojis that fail corporate parsing engines.
+- **Automated ATS Gap Analysis & Match Scoring**: Computes pre- and post-tailoring match percentages using `.agents/scripts/rate_resume.py`.
+- **Application Tracking**: Automatically records tailored applications, implemented keywords, and generated artifact paths in `job_tracker.md`.
 
 ---
 
 ## 📂 Project Structure
 
-- **`.agents/`**: Core Antigravity configuration directory.
-  - **`AGENTS.md`**: Contains rules and constraints for generating and formatting LaTeX code (balancing braces, escaping special characters, ATS best practices).
-  - **`skills/`**: Custom Antigravity capabilities.
-    - **`tailor_resume/`**: Centralized resume tailoring workflow that parses JDs, compares them with the master profile, performs ATS optimization, saves outputs, and updates tracking log.
-    - **`manage_templates/`**: Commands for managing (listing, viewing, adding) LaTeX templates.
-- **`templates/`**: Directory containing resume templates.
-  - `template-1-Image.tex`: Layout containing contact info and minipage image blocks.
-  - `template-2.tex`: Optimized AI Engineer resume layout.
-  - `template-3(Fullstack).tex`: Optimized AI and Fullstack Developer resume layout.
-  - `Template-4.docx`: Word document template (Calibri theme, custom borders, right-aligned tabs, programmatically compiled to PDF on Windows).
-- **`profile.md`**: Consolidated master profile (contact info, full skills inventory, all projects, and experience bullets).
-- **`job_tracker.md`**: Markdown table tracking all JDs posted and resumes generated.
+```text
+├── .agents/
+│   ├── AGENTS.md                  # Core rules: Hiring manager principles, ATS constraints, LaTeX escaping
+│   ├── scripts/
+│   │   ├── rate_resume.py          # TF-IDF & keyword ATS match rate scoring engine
+│   │   ├── generate_docx_resume.py # Programmatic Word (.docx) and PDF resume compiler
+│   │   └── generate_docx.py        # Tailored Word cover letter generator
+│   └── skills/
+│       ├── tailor_resume/          # Primary tailoring skill workflow & instructions
+│       └── manage_templates/       # Template management skill (list, inspect, add)
+├── templates/
+│   ├── template-1-Image.tex        # LaTeX layout with minipage header and photo placeholder
+│   ├── template-2.tex              # AI Engineer & GenAI developer LaTeX layout
+│   ├── template-3(Fullstack).tex   # AI & Fullstack developer LaTeX layout
+│   └── Template-4.docx             # Clean Word ATS reference layout
+├── outputs/                        # Generated resumes, cover letters, and reports per job
+│   └── <Candidate>-<Company>-<Role>/
+│       ├── resume.tex              # Overleaf-ready LaTeX code (if requested)
+│       ├── resume.docx             # ATS-formatted Word document
+│       ├── Sameer_<role>.pdf       # Compiled PDF resume
+│       ├── cover_letter.docx       # Tailored Word cover letter
+│       └── rating_report.md        # Detailed ATS match & gap analysis report
+├── profile.md                      # Consolidated master candidate profile & experience base
+├── job_tracker.md                  # Application history and keyword log
+└── README.md                       # Workspace documentation
+```
 
 ---
 
-## 🛠️ Custom Antigravity CLI Skills
+## 🛠️ Antigravity CLI Skills
 
-These skills are automatically discovered by Antigravity in this workspace. You can run them by talking to the agent naturally or prompting specific trigger phrases:
+These skills are natively discovered by Antigravity in this workspace:
 
 ### 1. Tailor Resume Skill
 **Triggers**: `tailor resume`, `generate resume`, `customize resume`, `resume for job`
 
-**How to Use**:
-1. Run the skill by saying `tailor resume` or `tailor my resume for a job`.
-2. Provide a **Job Description**:
-   - Paste the job description text directly.
-   - **OR** Paste a URL to the job posting (e.g., LinkedIn, Greenhouse, Lever, etc.).
-3. Choose your base template (e.g., LaTeX `templates/template-2.tex` for AI, `templates/template-3(Fullstack).tex` for Fullstack, or Word `templates/Template-4.docx` for Word/PDF resume output).
-4. The agent will:
-   - Load the user's master experience from `profile.md`.
-   - Ingest and analyze the JD (fetching it online if a URL is provided).
-   - Perform an **ATS Gap Analysis** comparing the JD to `profile.md` to identify missing keywords.
-   - Generate the tailored output:
-     - **LaTeX templates**: Save the tailored code to `outputs/<Username>-<Company_Name>-<Role_Name>/resume.tex`.
-     - **Template 4 (Word/PDF)**: Save the tailored Word resume to `resume.docx` and compile the PDF to `Sameer_<role_name>.pdf` in the same directory.
-   - Generate a professional cover letter as a Microsoft Word document (.docx) matching the tailored achievements, saving it to `outputs/<Username>-<Company_Name>-<Role_Name>/cover_letter.docx`.
-   - Log the application details in `job_tracker.md`.
-   - Output the calculated Job Match Rates, the ATS Keywords Table, and clickable links to all generated files in the terminal response. Suppression of raw code and text output ensures clean CLI operation.
+**Workflow**:
+1. Ingests Job Description from raw text or live URL (LinkedIn, Greenhouse, Lever, etc.).
+2. Conducts ATS Gap Analysis against `profile.md` using `rate_resume.py`.
+3. Synthesizes tailored experience bullets using product-style bold subtitles and explicit tech stack disclosures.
+4. Generates output artifacts in `outputs/<Candidate>-<Company>-<Role>/`:
+   - `resume.tex` (LaTeX) or `resume.docx` & `Sameer_<role>.pdf` (Word/PDF).
+   - `cover_letter.docx` (Cover letter).
+5. Automatically updates `job_tracker.md`.
+6. Reports the match rate progression (Before vs. After) and a summary table of integrated ATS keywords.
 
 ### 2. Manage Templates Skill
 **Triggers**: `list templates`, `view template <name>`, `add resume template`
 
-**How to Use**:
-- List all available resume designs: `list templates`
-- Show the content of a template: `view template template-2`
-- Add a new layout: `add resume template` (and supply the LaTeX code)
+**Usage**:
+- List all available templates: `list templates`
+- Inspect a specific template: `view template template-2`
+- Add a new layout: `add resume template`
 
 ---
 
-## 📝 LaTeX Character Escaping Reference
-When modifying your resume content manually, remember that LaTeX requires escaping specific characters:
+## 📝 LaTeX Character Escaping Quick Reference
+When modifying templates or LaTeX resumes manually, ensure all reserved characters are escaped:
 - `&` ➡️ `\&` (e.g., `Node.js \& React`)
-- `%` ➡️ `\%` (e.g., `increased efficiency by 30\%`)
+- `%` ➡️ `\%` (e.g., `reduced latency by 45\%`)
 - `_` ➡️ `\_` (e.g., `sighti\_evals`)
 - `$` ➡️ `\$`
 - `#` ➡️ `\#`
