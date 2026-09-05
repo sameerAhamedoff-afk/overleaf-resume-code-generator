@@ -113,7 +113,7 @@ if __name__ == '__main__':
     
     args = parser.parse_args()
     
-    with open(args.content_file, 'r', encoding='utf-8') as f:
+    with open(args.content_file, 'r', encoding='utf-8-sig') as f:
         paragraphs = f.read().split('\n\n')
         
     generate_cover_letter(

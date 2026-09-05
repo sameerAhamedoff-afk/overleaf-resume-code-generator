@@ -1,5 +1,6 @@
 import argparse
 import os
+import re
 import json
 import subprocess
 import docx
@@ -64,8 +65,54 @@ def clean_project_name(name, company_name):
         clean = clean.lstrip(" -–—|:").strip()
     return clean
 
+def add_formatted_bullet(doc, bullet_text):
+    """Adds a bullet paragraph with support for bold subtitles (e.g. '**Subtitle:** text' or 'Subtitle: text')."""
+    p_bullet = doc.add_paragraph()
+    p_bullet.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
+    p_bullet.paragraph_format.left_indent = Inches(0.25)
+    p_bullet.paragraph_format.first_line_indent = Inches(-0.25)
+    p_bullet.paragraph_format.space_before = Pt(0)
+    p_bullet.paragraph_format.space_after = Pt(1)
+    p_bullet.paragraph_format.line_spacing = 1.15
+
+    pPr = p_bullet._p.get_or_add_pPr()
+    numPr = parse_xml(r'<w:numPr %s><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' % nsdecls('w'))
+    pPr.append(numPr)
+
+    bullet_text = bullet_text.strip()
+    
+    # Check for markdown bold/italic subtitle: **Subtitle:** text or *Subtitle*: text or Subtitle: text
+    m_bold = re.match(r'^(?:\*{1,2}|_)\s*([^*_:]+?)\s*(?:\*{1,2}|_)\s*:\s*(.*)$', bullet_text)
+    if not m_bold:
+        m_bold = re.match(r'^(?:\*{1,2}|_)\s*([^*_]+?):\s*(?:\*{1,2}|_)\s*(.*)$', bullet_text)
+    if not m_bold:
+        m_plain = re.match(r'^([^:]{2,55}):\s+(.*)$', bullet_text)
+        if m_plain:
+            candidate = m_plain.group(1).strip()
+            if not any(p in candidate for p in ['.', ';', '!', '?']):
+                m_bold = m_plain
+
+    if m_bold:
+        subtitle = m_bold.group(1).strip().strip('*_').strip()
+        body = m_bold.group(2).strip()
+
+        run_sub = p_bullet.add_run(f"{subtitle}: ")
+        run_sub.font.name = 'Calibri'
+        run_sub.font.size = Pt(10)
+        run_sub.bold = True
+
+        run_body = p_bullet.add_run(body)
+        run_body.font.name = 'Calibri'
+        run_body.font.size = Pt(10)
+    else:
+        run_bullet = p_bullet.add_run(bullet_text)
+        run_bullet.font.name = 'Calibri'
+        run_bullet.font.size = Pt(10)
+
+    return p_bullet
+
 def generate_resume(data_path, output_path, include_certifications=None):
-    with open(data_path, 'r', encoding='utf-8') as f:
+    with open(data_path, 'r', encoding='utf-8-sig') as f:
         data = json.load(f)
 
     # Determine whether to include certifications
@@ -196,49 +243,7 @@ def generate_resume(data_path, output_path, include_certifications=None):
         run_summary.font.name = 'Calibri'
         run_summary.font.size = Pt(10)
 
-    # 4. Technical Skills (ATS-optimized: categorized, comma-separated, NO pipe walls!)
-    add_section_heading("TECHNICAL SKILLS")
-    tech_skills_dict = {}
-    if "technical_skills" in data and isinstance(data["technical_skills"], dict):
-        tech_skills_dict = data["technical_skills"]
-    elif "tools" in data and isinstance(data["tools"], dict):
-        tech_skills_dict = data["tools"]
-    elif "skills" in data and isinstance(data["skills"], dict):
-        tech_skills_dict = data["skills"]
-    elif "skills" in data and isinstance(data["skills"], list):
-        for item in data["skills"]:
-            if ":" in item:
-                cat, val = item.split(":", 1)
-                tech_skills_dict[cat.strip()] = val.strip()
-            else:
-                cleaned_item = item.replace(" | ", ", ").replace("|", ",")
-                tech_skills_dict.setdefault("Core Skills", []).append(cleaned_item)
-
-    for key, val in tech_skills_dict.items():
-        p_tool = doc.add_paragraph()
-        p_tool.alignment = WD_ALIGN_PARAGRAPH.LEFT
-        p_tool.paragraph_format.space_before = Pt(0)
-        p_tool.paragraph_format.space_after = Pt(2)
-        p_tool.paragraph_format.line_spacing = 1.1
-
-        run_cat = p_tool.add_run(f"{key}: ")
-        run_cat.font.name = 'Calibri'
-        run_cat.font.size = Pt(10)
-        run_cat.bold = True
-
-        if isinstance(val, list):
-            val_str = ", ".join(str(v).strip() for v in val)
-        else:
-            val_str = str(val)
-
-        # Eliminate any pipeline characters inside values to avoid confusing linear ATS parsers
-        val_str = val_str.replace(" | ", ", ").replace(" |", ",").replace("| ", ", ")
-
-        run_val = p_tool.add_run(val_str)
-        run_val.font.name = 'Calibri'
-        run_val.font.size = Pt(10)
-
-    # 5. Professional Experience
+    # 4. Professional Experience
     add_section_heading("PROFESSIONAL EXPERIENCE")
     
     # Associate projects to roles dynamically using multi-stage matching if projects exist
@@ -312,21 +317,7 @@ def generate_resume(data_path, output_path, include_certifications=None):
 
         # Direct role bullets
         for bullet in role.get("bullets", []):
-            p_bullet = doc.add_paragraph()
-            p_bullet.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-            p_bullet.paragraph_format.left_indent = Inches(0.25)
-            p_bullet.paragraph_format.first_line_indent = Inches(-0.25)
-            p_bullet.paragraph_format.space_before = Pt(0)
-            p_bullet.paragraph_format.space_after = Pt(1)
-            p_bullet.paragraph_format.line_spacing = 1.15
-
-            pPr = p_bullet._p.get_or_add_pPr()
-            numPr = parse_xml(r'<w:numPr %s><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' % nsdecls('w'))
-            pPr.append(numPr)
-
-            run_bullet = p_bullet.add_run(bullet)
-            run_bullet.font.name = 'Calibri'
-            run_bullet.font.size = Pt(10)
+            add_formatted_bullet(doc, bullet)
 
         # Projects / domains under this role (if any)
         projects_for_role = role_projects.get(role.get('company', ''), [])
@@ -344,21 +335,49 @@ def generate_resume(data_path, output_path, include_certifications=None):
             run_title.bold = True
 
             for bullet in proj.get("bullets", []):
-                p_bullet = doc.add_paragraph()
-                p_bullet.alignment = WD_ALIGN_PARAGRAPH.JUSTIFY
-                p_bullet.paragraph_format.left_indent = Inches(0.25)
-                p_bullet.paragraph_format.first_line_indent = Inches(-0.25)
-                p_bullet.paragraph_format.space_before = Pt(0)
-                p_bullet.paragraph_format.space_after = Pt(1)
-                p_bullet.paragraph_format.line_spacing = 1.15
+                add_formatted_bullet(doc, bullet)
 
-                pPr = p_bullet._p.get_or_add_pPr()
-                numPr = parse_xml(r'<w:numPr %s><w:ilvl w:val="0"/><w:numId w:val="1"/></w:numPr>' % nsdecls('w'))
-                pPr.append(numPr)
+    # 5. Technical Skills (ATS-optimized: categorized, comma-separated, NO pipe walls!)
+    add_section_heading("TECHNICAL SKILLS")
+    tech_skills_dict = {}
+    if "technical_skills" in data and isinstance(data["technical_skills"], dict):
+        tech_skills_dict = data["technical_skills"]
+    elif "tools" in data and isinstance(data["tools"], dict):
+        tech_skills_dict = data["tools"]
+    elif "skills" in data and isinstance(data["skills"], dict):
+        tech_skills_dict = data["skills"]
+    elif "skills" in data and isinstance(data["skills"], list):
+        for item in data["skills"]:
+            if ":" in item:
+                cat, val = item.split(":", 1)
+                tech_skills_dict[cat.strip()] = val.strip()
+            else:
+                cleaned_item = item.replace(" | ", ", ").replace("|", ",")
+                tech_skills_dict.setdefault("Core Skills", []).append(cleaned_item)
 
-                run_bullet = p_bullet.add_run(bullet)
-                run_bullet.font.name = 'Calibri'
-                run_bullet.font.size = Pt(10)
+    for key, val in tech_skills_dict.items():
+        p_tool = doc.add_paragraph()
+        p_tool.alignment = WD_ALIGN_PARAGRAPH.LEFT
+        p_tool.paragraph_format.space_before = Pt(0)
+        p_tool.paragraph_format.space_after = Pt(2)
+        p_tool.paragraph_format.line_spacing = 1.1
+
+        run_cat = p_tool.add_run(f"{key}: ")
+        run_cat.font.name = 'Calibri'
+        run_cat.font.size = Pt(10)
+        run_cat.bold = True
+
+        if isinstance(val, list):
+            val_str = ", ".join(str(v).strip() for v in val)
+        else:
+            val_str = str(val)
+
+        # Eliminate any pipeline characters inside values to avoid confusing linear ATS parsers
+        val_str = val_str.replace(" | ", ", ").replace(" |", ",").replace("| ", ", ")
+
+        run_val = p_tool.add_run(val_str)
+        run_val.font.name = 'Calibri'
+        run_val.font.size = Pt(10)
 
     # 6. Education
     add_section_heading("EDUCATION")
@@ -505,7 +524,7 @@ if __name__ == '__main__':
     generate_resume(args.json, args.output, include_certifications=args.include_certifications)
 
     if args.pdf:
-        with open(args.json, 'r', encoding='utf-8') as f:
+        with open(args.json, 'r', encoding='utf-8-sig') as f:
             data = json.load(f)
         role = data.get("role", "resume")
         role_clean = role.replace(" ", "_").replace("/", "_").replace("-", "_")

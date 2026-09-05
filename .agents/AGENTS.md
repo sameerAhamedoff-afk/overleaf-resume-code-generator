@@ -30,11 +30,17 @@ When working in this workspace, you must adhere to the following rules:
 - **Clean Contact Info & Headers**:
   - Display candidate name on line 1, conventional target role/headline on line 2, and clean contact information on line 3.
   - Never insert unicode emojis/symbols (e.g. ☎, 🖂, 📍) in contact information as they fail ATS parsers and break text encoding.
-- **Explicit Standard Headings**:
-  - Always use conventional section headings: `PROFESSIONAL SUMMARY`, `TECHNICAL SKILLS`, `PROFESSIONAL EXPERIENCE`, and `EDUCATION`.
-- **Action-Oriented Bullet Points (STAR & XYZ Formula)**:
-  - Every bullet point must begin with a strong, active engineering verb (e.g., *Architected, Engineered, Deployed, Benchmarked, Streamlined*).
-  - Apply Google's **XYZ formula**: *Accomplished [X], as measured by [Y], by doing [Z]*. Emphasize production scale, latency reduction, cost optimization, and application uptime (e.g., 99.9%).
+- **Explicit Standard Headings & Section Order**:
+  - **CRITICAL ORDER**: `PROFESSIONAL EXPERIENCE` must strictly come before `TECHNICAL SKILLS`.
+  - Always follow this conventional section sequence: `PROFESSIONAL SUMMARY`, `PROFESSIONAL EXPERIENCE`, `TECHNICAL SKILLS`, and `EDUCATION` (followed by `PROJECTS` and `CERTIFICATIONS` if applicable).
+- **Action-Oriented Bullet Points (What-How-Why Storytelling & Google XYZ Formula)**:
+  - **Bold Product-Style Subtitle Requirement**: Every bullet point must lead with a concise **bold subtitle formatted like a product, system, engine, or platform name** (e.g. `**FinTax Copilot:**`, `**Beeha DevSecOps Agent:**`, `**DocuShield PII Redactor:**`, `**Sighti Vision Heatmaps:**`, `**Omnisense Telemetry Gateway:**`, `**Sentinel Observability Suite:**` in Markdown/DOCX, or `\item \textbf{Beeha DevSecOps Agent:}...` in LaTeX). Avoid generic labels (like "Monitoring setup", "Data Processing", or "RAG Pipeline"); brand each bullet as a concrete shipped product, service, or tool.
+  - Bullet points must focus on business value and tangible engineering outcomes rather than simple daily tasks or passive job descriptions.
+  - **Explicit Technology Informing**: When detailing the implementation, always explicitly name and highlight the concrete technologies and frameworks used (e.g., LangChain, LangGraph, FastAPI, Pinecone, Docker, AWS Bedrock, PostgreSQL) rather than describing methods in the abstract.
+  - Structure every bullet point using the **What-How-Why** storytelling framework synthesized with Google's **XYZ formula** (*Accomplished [X], as measured by [Y], by doing [Z]*):
+    - **What**: The specific engineering action, product, or system capability delivered. Always lead with a decisive active engineering verb (e.g., *Architected, Engineered, Deployed, Benchmarked, Streamlined, Spearheaded*).
+    - **How**: The explicit technologies, frameworks, architectural patterns, or methodologies used (e.g., *built using LangChain and LangGraph for multi-agent state orchestration, async FastAPI workers, Pinecone vector indexing, Docker containerization, AWS ECS/Fargate*). Always inform the exact tech stack utilized.
+    - **Why**: The measurable result, business impact, latency/cost optimization, or the critical "so what?" answering why it mattered to the organization (e.g., *cutting inference latency by 45%, reducing cloud compute spend by 30%, boosting query throughput 3x, and guaranteeing 99.9% uptime*).
 - **No Keyword Stuffing & Truthful Grounding**:
   - Integrate required keywords logically into real experiences from `profile.md`. Do not fabricate experience.
 - **Maintain Contact Details**:
